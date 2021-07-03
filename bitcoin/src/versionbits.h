@@ -52,14 +52,15 @@ struct BIP9Stats {
 /**
  * Abstract class that implements BIP9-style threshold logic, and caches results.
  */
-class AbstractThresholdConditionChecker {
+class AbstractThresholdConditionChecker
+{
 protected:
-    virtual bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const =0;
-    virtual int64_t BeginTime(const Consensus::Params& params) const =0;
-    virtual int64_t EndTime(const Consensus::Params& params) const =0;
+    virtual bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const = 0;
+    virtual int64_t BeginTime(const Consensus::Params& params) const = 0;
+    virtual int64_t EndTime(const Consensus::Params& params) const = 0;
     virtual int MinActivationHeight(const Consensus::Params& params) const { return 0; }
-    virtual int Period(const Consensus::Params& params) const =0;
-    virtual int Threshold(const Consensus::Params& params) const =0;
+    virtual int Period(const Consensus::Params& params) const = 0;
+    virtual int Threshold(const Consensus::Params& params) const = 0;
 
 public:
     /** Returns the numerical statistics of an in-progress BIP9 softfork in the current period */
@@ -73,8 +74,7 @@ public:
 
 /** BIP 9 allows multiple softforks to be deployed in parallel. We cache per-period state for every one of them
  *  keyed by the bit position used to signal support. */
-struct VersionBitsCache
-{
+struct VersionBitsCache {
     ThresholdConditionCache caches[Consensus::MAX_VERSION_BITS_DEPLOYMENTS];
 
     void Clear();
