@@ -147,6 +147,8 @@ __iterator_category(const _Iter&)
   return _Category();
 }
 
+//https://www.cnblogs.com/xiaoshiwang/p/11937275.html
+
 template <class _Iter>
 inline typename iterator_traits<_Iter>::difference_type*
 __distance_type(const _Iter&)

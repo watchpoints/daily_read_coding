@@ -1,0 +1,20 @@
+Lex词法分析程序+Yacc语法分析程序: 动态添加单词与词性关联，分析英文语句中单词的词性
+
+%%
+sentence: subject VERB object{ printf("Sentence is valid.\n"); }
+	;
+
+subject:  NOUN
+	| PRONOUN
+	;
+object:   NOUN
+      ;
+	
+%%
+
+NOUN PRONOUN 表示单词的词性
+
+当输入的词语结构符合 subject VERB object 规则的时候输出"Sentence is valid.\n";
+
+其中 subject指  NOUN或者 PRONOUN词性的单词
+object 值 NOUN词性的单词

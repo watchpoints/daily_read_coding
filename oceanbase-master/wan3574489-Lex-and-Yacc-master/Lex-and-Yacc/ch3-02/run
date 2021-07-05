@@ -1,0 +1,6 @@
+#!/bin/sh
+
+lex lex.l
+yacc -d yacc.y
+gcc -c lex.yy.c y.tab.c
+gcc -o example lex.yy.o  y.tab.o -ll
